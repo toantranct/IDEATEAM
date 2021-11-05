@@ -87,20 +87,20 @@ session_start();
                         </li>
 
                         <li>
-                            <a href="index.php?type=5">
+                            <a href="index.php?type=3">
                                 <i class="fi-air-play"></i> <span> Thông tin Phòng Chiếu </span>
                             </a>
                         </li>
 
 
                         <li>
-                            <a href="index.php?type=3">
+                            <a href="index.php?type=4">
                                 <i class="fi-air-play"></i> <span> Thông tin Khách hàng </span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="index.php?type=4">
+                            <a href="index.php?type=5">
                                 <i class="fi-air-play"></i> <span> Quản lý Nhân viên </span>
                             </a>
                         </li>
