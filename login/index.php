@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<?php
-    include 'login.php';
+
+<?php 
+  session_start();
+  if (isset($_SESSION['login']))  header('location: ../index.php');
 ?>
 <html>
     <head>
@@ -28,7 +30,7 @@
     <body class="account-pages">
 
         <!-- Begin page -->
-        <div class="accountbg" style="background: url('../Assets/images/bg-1.jpg');background-size: cover;"></div>
+        <!-- <div class="accountbg" style="background: url('../Assets/images/bg-1.jpg');background-size: cover;"></div> -->
 
         <div class="wrapper-page account-page-full">
 
@@ -44,12 +46,12 @@
                                 </a>
                             </h2>
 
-                            <form class="" action="#">
+                            <form class="" action="login.php" method="POST">
 
                                 <div class="form-group m-b-20 row">
                                     <div class="col-12">
                                         <label for="emailaddress">Username</label>
-                                        <input class="form-control" type="username" id="username" required="" placeholder="Nhập username">
+                                        <input class="form-control" type="username" id="username" name = "username" required="" placeholder="Nhập username">
                                     </div>
                                 </div>
 
@@ -57,7 +59,7 @@
                                     <div class="col-12">
                                         <a href="page-recoverpw.html" class="text-muted pull-right"><small>Quên mật khẩu?</small></a>
                                         <label for="password">Password</label>
-                                        <input class="form-control" type="password" required="" id="password" placeholder="Nhập mật khẩu">
+                                        <input class="form-control" type="password" required="" id="password" name ="password" placeholder="Nhập mật khẩu">
                                     </div>
                                 </div>
 
@@ -76,7 +78,7 @@
 
                                 <div class="form-group row text-center m-t-10">
                                     <div class="col-12">
-                                        <button class="btn btn-block btn-custom waves-effect waves-light" type="submit">Đăng nhập</button>
+                                        <button class="btn btn-block btn-custom waves-effect waves-light" type="submit" name = "btnSubmit">Đăng nhập</button>
                                     </div>
                                 </div>
 
