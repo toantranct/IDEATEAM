@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sửa thông tin suất chiếu</title>
+    <title>Thêm phòng chiếu</title>
     <!-- App favicon -->
     <link rel="shortcut icon" href="Assets/images/favicon.ico">
 
@@ -19,40 +19,34 @@
 </head>
 
 <body>
-    <form action="ChiTietSuatChieu-edit.php?ID=<?php echo $_GET['ID']; ?>" method="post">
+    <form action="PhongChieu-add.php" method="post">
         <div class="container">
             <div class="col-md-12">
                 <div class="card-box">
-                    <h4 class="m-t-0 m-b-30 header-title"><b>Sửa thông tin suất chiếu: <span style="color: red;"> <?php echo $_GET['ID']; ?></span> </b></h4>
+                    <h4 class="m-t-0 m-b-30 header-title"><b>Thêm thông tin phòng chiếu: <span style="color: red;"> </span> </b></h4>
 
                     <form class="form-horizontal" role="form">
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-3 col-form-label">Mã Phim</label>
+                            <label for="inputEmail3" class="col-3 col-form-label">Mã phòng chiếu</label>
                             <div class="col-9">
-                                <input type="" class="form-control" required id="MaPhim" name = "MaPhim" placeholder="Mã phim">
+                                <input type="" class="form-control" required id="MaPhongChieu" name = "MaPhongChieu" placeholder="Mã phòng chiếu">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputPassword3" class="col-3 col-form-label">Mã Phòng Chiếu</label>
+                            <label for="inputEmail3" class="col-3 col-form-label">Tên phòng chiếu</label>
                             <div class="col-9">
-                                <input type="" class="form-control" required id="MaPC"  name="MaPC" placeholder="Mã phòng chiếu">
+                                <input type="" class="form-control" required id="TenPhongChieu" name = "TenPhongChieu" placeholder="Tên phòng chiếu">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputPassword5" class="col-3 col-form-label">Loại Phim</label>
+                            <label for="inputPassword3" class="col-3 col-form-label">Số lượng ghế</label>
                             <div class="col-9">
-                                <input type="" class="form-control" required id="LoaiPhim" name="LoaiPhim" placeholder="Loại phim">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputEmail3" class="col-3 col-form-label">Lịch Chiếu</label>
-                            <div class="col-9">
-                                <input type="" class="form-control" required id="LC" name = "LC" placeholder="Ví dụ: 10:35PM 5/11/2021">
+                                <input type="" class="form-control" required id="SLGhe"  name="SLGhe" placeholder="Số lượng ghế">
                             </div>
                         </div>
                         <div class="form-group mb-0 justify-content-end row">
                             <div class="col-9">
-                                <button type="submit" name = "btnEdit" class="btn btn-info waves-effect waves-light">Sửa</button>
+                                <button type="submit" name = "btnEdit" class="btn btn-info waves-effect waves-light">Thêm</button>
                             </div>
                         </div>
                     </form>
@@ -83,17 +77,15 @@
     if (isset($_POST['btnEdit'])) {
         include 'connect.php';
 
-        $id = $_GET['ID'];
-        $MaPhim = $_POST['MaPhim'];
-        $MaPC = $_POST['MaPC'];
-        $LoaiPhim = $_POST['LoaiPhim'];
-        $LichChieu = $_POST['LC'];
+        $MaPhongChieu = $_POST['MaPhongChieu'];
+        $TenPhongChieu = $_POST['TenPhongChieu'];
+        $SLGhe = $_POST['SLGhe'];
         
         // echo $id . $MaPhim . $MaPC . $LoaiPhim. $LichChieu;
 
          // Prepare statement
-        $sql = "Update ChiTietSuatChieu set MaPhim = '$MaPhim', MaPhongChieu =  '$MaPC', LoaiPhim = '$LoaiPhim', LichChieu = '$LichChieu' ";
-        $sql = $sql . "where ID = '$id'";
+        $sql = "Insert into PhongChieu values ('$MaPhongChieu',
+        '$TenPhongChieu', '$SLGhe') ";
        
 
         // execute the query
@@ -103,10 +95,10 @@
             $stmt->execute();
             // echo a message to say the UPDATE succeeded
           
-                echo "<script type='text/javascript'> alert('Cập nhật thành công!');</script>";
+                echo "<script type='text/javascript'> alert('Thêm thành công!');</script>";
         } catch (Exception) {
 
-            echo "<script type='text/javascript'> alert('Cập nhật thất bại, vui lòng thử lại!');</script>";
+            echo "<script type='text/javascript'> alert('Thêm thất bại, vui lòng thử lại!');</script>";
             
         }
         

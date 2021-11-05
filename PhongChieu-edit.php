@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sửa thông tin suất chiếu</title>
+    <title>Sửa phòng chiếu</title>
     <!-- App favicon -->
     <link rel="shortcut icon" href="Assets/images/favicon.ico">
 
@@ -19,35 +19,23 @@
 </head>
 
 <body>
-    <form action="ChiTietSuatChieu-edit.php?ID=<?php echo $_GET['ID']; ?>" method="post">
+    <form action="PhongChieu-edit.php?MaPhongChieu=<?php echo $_GET['MaPhongChieu']; ?>" method="post">
         <div class="container">
             <div class="col-md-12">
                 <div class="card-box">
-                    <h4 class="m-t-0 m-b-30 header-title"><b>Sửa thông tin suất chiếu: <span style="color: red;"> <?php echo $_GET['ID']; ?></span> </b></h4>
+                    <h4 class="m-t-0 m-b-30 header-title"><b>Sửa phim: <span style="color: red;"> <?php echo $_GET['MaPhongChieu']; ?></span> </b></h4>
 
                     <form class="form-horizontal" role="form">
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-3 col-form-label">Mã Phim</label>
+                            <label for="inputEmail3" class="col-3 col-form-label">Nhập tên phòng chiếu</label>
                             <div class="col-9">
-                                <input type="" class="form-control" required id="MaPhim" name = "MaPhim" placeholder="Mã phim">
+                                <input type="" class="form-control" required id="TenPhongChieu" name = "TenPhongChieu" placeholder="Tên Phòng Chiếu">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputPassword3" class="col-3 col-form-label">Mã Phòng Chiếu</label>
+                            <label for="inputPassword3" class="col-3 col-form-label">Nhập số lượng ghế</label>
                             <div class="col-9">
-                                <input type="" class="form-control" required id="MaPC"  name="MaPC" placeholder="Mã phòng chiếu">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputPassword5" class="col-3 col-form-label">Loại Phim</label>
-                            <div class="col-9">
-                                <input type="" class="form-control" required id="LoaiPhim" name="LoaiPhim" placeholder="Loại phim">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputEmail3" class="col-3 col-form-label">Lịch Chiếu</label>
-                            <div class="col-9">
-                                <input type="" class="form-control" required id="LC" name = "LC" placeholder="Ví dụ: 10:35PM 5/11/2021">
+                                <input type="number" class="form-control" required id="SLGhe"  name="SLGhe" placeholder="Số lượng ghế" min="0">
                             </div>
                         </div>
                         <div class="form-group mb-0 justify-content-end row">
@@ -83,17 +71,15 @@
     if (isset($_POST['btnEdit'])) {
         include 'connect.php';
 
-        $id = $_GET['ID'];
-        $MaPhim = $_POST['MaPhim'];
-        $MaPC = $_POST['MaPC'];
-        $LoaiPhim = $_POST['LoaiPhim'];
-        $LichChieu = $_POST['LC'];
+        $MaPhongChieu = $_GET['MaPhongChieu'];
+        $TenPhongChieu = $_POST['TenPhongChieu'];
+        $SLGhe = $_POST['SLGhe'];
         
         // echo $id . $MaPhim . $MaPC . $LoaiPhim. $LichChieu;
 
          // Prepare statement
-        $sql = "Update ChiTietSuatChieu set MaPhim = '$MaPhim', MaPhongChieu =  '$MaPC', LoaiPhim = '$LoaiPhim', LichChieu = '$LichChieu' ";
-        $sql = $sql . "where ID = '$id'";
+        $sql = "Update PhongChieu set TenPhongChieu = N'$TenPhongChieu', SLGhe =  '$SLGhe'";
+        $sql = $sql . "where MaPhongChieu = '$MaPhongChieu'";
        
 
         // execute the query

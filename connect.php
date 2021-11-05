@@ -1,5 +1,5 @@
 <?php
-    $serverName = "DESKTOP-ASIQ3PU"; 
+    $serverName = "ADMIN\SQLEXPRESS"; 
     $user = "sa";   
     $password = "123456";  
     $databaseName = "db_RAPCHIEUPHIM_BTL";  

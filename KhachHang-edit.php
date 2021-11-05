@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sửa thông tin suất chiếu</title>
+    <title>Sửa thông tin khách</title>
     <!-- App favicon -->
     <link rel="shortcut icon" href="Assets/images/favicon.ico">
 
@@ -19,35 +19,47 @@
 </head>
 
 <body>
-    <form action="ChiTietSuatChieu-edit.php?ID=<?php echo $_GET['ID']; ?>" method="post">
+    <form action="KhachHang-edit.php?MaK=<?php echo $_GET['MaK']; ?>" method="post">
         <div class="container">
             <div class="col-md-12">
                 <div class="card-box">
-                    <h4 class="m-t-0 m-b-30 header-title"><b>Sửa thông tin suất chiếu: <span style="color: red;"> <?php echo $_GET['ID']; ?></span> </b></h4>
+                    <h4 class="m-t-0 m-b-30 header-title"><b>Sửa khách: <span style="color: red;"> <?php echo $_GET['MaK']; ?></span> </b></h4>
 
                     <form class="form-horizontal" role="form">
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-3 col-form-label">Mã Phim</label>
+                            <label for="inputEmail3" class="col-3 col-form-label">Nhập tên khách</label>
                             <div class="col-9">
-                                <input type="" class="form-control" required id="MaPhim" name = "MaPhim" placeholder="Mã phim">
+                                <input type="" class="form-control" required id="TenK" name = "TenK" placeholder="Tên khách">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputPassword3" class="col-3 col-form-label">Mã Phòng Chiếu</label>
+                            <label for="inputPassword3" class="col-3 col-form-label">Nhập giới tính</label>
                             <div class="col-9">
-                                <input type="" class="form-control" required id="MaPC"  name="MaPC" placeholder="Mã phòng chiếu">
+                                <input type="" class="form-control" required id="GioiTinh"  name="GioiTinh" placeholder="Giới tính">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputPassword5" class="col-3 col-form-label">Loại Phim</label>
+                            <label for="inputPassword5" class="col-3 col-form-label">Nhập ngày sinh</label>
                             <div class="col-9">
-                                <input type="" class="form-control" required id="LoaiPhim" name="LoaiPhim" placeholder="Loại phim">
+                                <input type="date" class="form-control" required id="NgaySinh" name="NgaySinh" placeholder="Ngày sinh">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-3 col-form-label">Lịch Chiếu</label>
+                            <label for="inputEmail3" class="col-3 col-form-label">Nhập số điện thoại</label>
                             <div class="col-9">
-                                <input type="" class="form-control" required id="LC" name = "LC" placeholder="Ví dụ: 10:35PM 5/11/2021">
+                                <input type="" class="form-control" required id="SDT" name = "SDT" placeholder="Số điện thoại">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-3 col-form-label">Nhập email</label>
+                            <div class="col-9">
+                                <input type="" class="form-control" required id="Email" name = "Email" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-3 col-form-label">Nhập địa chỉ</label>
+                            <div class="col-9">
+                                <input type="" class="form-control" required id="DiaChi" name = "DiaChi" placeholder="Địa chỉ">
                             </div>
                         </div>
                         <div class="form-group mb-0 justify-content-end row">
@@ -83,17 +95,19 @@
     if (isset($_POST['btnEdit'])) {
         include 'connect.php';
 
-        $id = $_GET['ID'];
-        $MaPhim = $_POST['MaPhim'];
-        $MaPC = $_POST['MaPC'];
-        $LoaiPhim = $_POST['LoaiPhim'];
-        $LichChieu = $_POST['LC'];
+        $MaK = $_GET['MaK'];
+        $TenK = $_POST['TenK'];
+        $GioiTinh = $_POST['GioiTinh'];
+        $NgaySinh = $_POST['NgaySinh'];
+        $SDT = $_POST['SDT'];
+        $Email = $_POST['Email'];
+        $DiaChi = $_POST['DiaChi'];
         
         // echo $id . $MaPhim . $MaPC . $LoaiPhim. $LichChieu;
 
          // Prepare statement
-        $sql = "Update ChiTietSuatChieu set MaPhim = '$MaPhim', MaPhongChieu =  '$MaPC', LoaiPhim = '$LoaiPhim', LichChieu = '$LichChieu' ";
-        $sql = $sql . "where ID = '$id'";
+        $sql = "Update KhachHang set TenK = N'$TenK', GioiTinh =  N'$GioiTinh', NgaySinh = '$NgaySinh', SDT = N'$SDT', Email =  N'$Email', DiaChi = N'$DiaChi'";
+        $sql = $sql . "where MaK = '$MaK'";
        
 
         // execute the query

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thêm suất chiếu</title>
+    <title>Thêm phim</title>
     <!-- App favicon -->
     <link rel="shortcut icon" href="Assets/images/favicon.ico">
 
@@ -19,41 +19,59 @@
 </head>
 
 <body>
-    <form action="ChiTietSuatChieu-add.php" method="post">
+    <form action="Phim-add.php" method="post">
         <div class="container">
             <div class="col-md-12">
                 <div class="card-box">
-                    <h4 class="m-t-0 m-b-30 header-title"><b>Thêm thông tin suất chiếu: <span style="color: red;"> </span> </b></h4>
+                    <h4 class="m-t-0 m-b-30 header-title"><b>Thêm thông tin phim: <span style="color: red;"> </span> </b></h4>
 
                     <form class="form-horizontal" role="form">
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-3 col-form-label">Mã Suất Chiếu</label>
-                            <div class="col-9">
-                                <input type="" class="form-control" required id="ID" name = "ID" placeholder="Mã suất chiếu">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputEmail3" class="col-3 col-form-label">Mã Phim</label>
+                            <label for="inputEmail3" class="col-3 col-form-label">Mã phim</label>
                             <div class="col-9">
                                 <input type="" class="form-control" required id="MaPhim" name = "MaPhim" placeholder="Mã phim">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputPassword3" class="col-3 col-form-label">Mã Phòng Chiếu</label>
+                            <label for="inputEmail3" class="col-3 col-form-label">Tên phim</label>
                             <div class="col-9">
-                                <input type="" class="form-control" required id="MaPC"  name="MaPC" placeholder="Mã phòng chiếu">
+                                <input type="" class="form-control" required id="TenPhim" name = "TenPhim" placeholder="Tên phim">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputPassword5" class="col-3 col-form-label">Loại Phim</label>
+                            <label for="inputPassword3" class="col-3 col-form-label">Thể loại</label>
                             <div class="col-9">
-                                <input type="" class="form-control" required id="LoaiPhim" name="LoaiPhim" placeholder="Loại phim">
+                                <input type="" class="form-control" required id="TheLoai"  name="TheLoai" placeholder="Thể loại">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-3 col-form-label">Lịch Chiếu</label>
+                            <label for="inputPassword5" class="col-3 col-form-label">Thời lượng</label>
                             <div class="col-9">
-                            <input type="" class="form-control" required id="LC" name = "LC" placeholder="Ví dụ: 10:35PM 5/11/2021">
+                                <input type="number" class="form-control" required id="ThoiLuong" name="ThoiLuong" min="0">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-3 col-form-label">Nhà sản xuất</label>
+                            <div class="col-9">
+                            <input type="" class="form-control" required id="NhaSX" name = "NhaSX" placeholder="Nhà sản xuất">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputPassword3" class="col-3 col-form-label">Đạo diễn</label>
+                            <div class="col-9">
+                                <input type="" class="form-control" required id="DaoDien"  name="DaoDien" placeholder="Đạo diễn">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputPassword3" class="col-3 col-form-label">Mô tả</label>
+                            <div class="col-9">
+                                <input type="" class="form-control" required id="MoTa"  name="MoTa" placeholder="Mô tả">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputPassword3" class="col-3 col-form-label">Năm sản xuất</label>
+                            <div class="col-9">
+                                <input type="number" class="form-control" required id="NamSX"  name="NamSX" placeholder="Năm sản xuất" min="1000" max="9999">
                             </div>
                         </div>
                         <div class="form-group mb-0 justify-content-end row">
@@ -89,17 +107,20 @@
     if (isset($_POST['btnEdit'])) {
         include 'connect.php';
 
-        $id = $_POST['ID'];
         $MaPhim = $_POST['MaPhim'];
-        $MaPC = $_POST['MaPC'];
-        $LoaiPhim = $_POST['LoaiPhim'];
-        $LichChieu = $_POST['LC'];
+        $TenPhim = $_POST['TenPhim'];
+        $TheLoai = $_POST['TheLoai'];
+        $ThoiLuong = $_POST['ThoiLuong'];
+        $NhaSX = $_POST['NhaSX'];
+        $DaoDien = $_POST['DaoDien'];
+        $MoTa = $_POST['MoTa'];
+        $NamSX = $_POST['NamSX'];
         
         // echo $id . $MaPhim . $MaPC . $LoaiPhim. $LichChieu;
 
          // Prepare statement
-        $sql = "Insert into ChiTietSuatChieu values ('$id', 
-        '$MaPhim', '$MaPC', '$LoaiPhim', '$LichChieu') ";
+        $sql = "Insert into Phim values ('$MaPhim',
+        '$TenPhim', '$TheLoai', '$ThoiLuong', '$NhaSX', '$DaoDien', '$MoTa', '$NamSX') ";
        
 
         // execute the query
