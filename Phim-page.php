@@ -6,7 +6,11 @@
 
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
-
+    $admin = '';
+    $admin2 = '';
+    if (isset($_SESSION['admin']) && $_SESSION['admin'] === TRUE)
+        $admin = '<th>Sửa</th>
+        <th>Xoá</th>';
     echo '
         <div class="table-rep-plugin">
         <div class="table-responsive" data-pattern="priority-columns">
@@ -21,13 +25,16 @@
                         <th data-priority="6">Đạo diễn</th>
                         <th data-priority="6">Mô tả</th>
                         <th data-priority="6">Năm sản xuất</th>
-                        <th>Sửa</th>
-                        <th>Xoá</th>
+                        '.$admin.'
                     </tr>
                 </thead>
                 <tbody>
     ';
-    while ($row = $stmt->fetch()) {   
+    while ($row = $stmt->fetch()) {  
+        if (isset($_SESSION['admin']) && $_SESSION['admin'] === TRUE){
+            $admin2 = ' <td><a href ="Phim-edit.php?MaPhim='.$row['MaPhim'].'"  target= "_blank" class="mdi mdi-account-edit"></a></td>
+            <td><a href ="Phim-del.php?MaPhim='.$row['MaPhim'].'"  target= "_blank" class="mdi mdi-close"></span></td>';
+        }
     echo '
                     <tr>
                         <td>'.$row['MaPhim'].'</td>
@@ -38,8 +45,7 @@
                         <td>'.$row['DaoDien'].'</td>
                         <td>'.$row['MoTa'].'</td>
                         <td>'.$row['NamSX'].'</td>
-                        <td><a href ="Phim-edit.php?MaPhim='.$row['MaPhim'].'"  target= "_blank" class="mdi mdi-account-edit"></a></td>
-                        <td><a href ="Phim-del.php?MaPhim='.$row['MaPhim'].'"  target= "_blank" class="mdi mdi-close"></span></td>
+                       '.$admin2.'
                     </tr>
                     
               ' ;

@@ -7,7 +7,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Highdmin - Responsive Bootstrap 4 Admin Dashboard</title>
+        <title>DEA STUDIO - Đăng nhập</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -42,7 +42,7 @@
                         <div class="card-box p-5">
                             <h2 class="text-uppercase text-center pb-4">
                                 <a href="index.html" class="text-success">
-                                    <span>IDEA TEAM</span>
+                                    <span>IDEA STUDIO</span>
                                 </a>
                             </h2>
 

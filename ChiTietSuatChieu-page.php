@@ -6,7 +6,12 @@
 
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
-
+  
+    $admin = '';
+    $admin2 = '';
+    if (isset($_SESSION['admin']) && $_SESSION['admin'] === TRUE)
+        $admin = '<th>Sửa</th>
+        <th>Xoá</th>';
     echo '
         <div class="table-rep-plugin">
         <div class="table-responsive" data-pattern="priority-columns">
@@ -24,13 +29,18 @@
                         <th data-priority="6">Tên phòng chiếu</th>
                         <th data-priority="6">Số lượng ghế</th>
                         <th data-priority="6">Lịch chiếu</th>
-                        <th>Sửa</th>
-                        <th>Xoá</th>
+                     '.$admin.'
                     </tr>
                 </thead>
                 <tbody>
     ';
     while ($row = $stmt->fetch()) {   
+        $admin = '';
+        $admin2 = '';
+        if (isset($_SESSION['admin']) && $_SESSION['admin'] === TRUE){
+            $admin2 = '  <td><a href ="ChiTietSuatChieu-edit.php?ID='.$row['ID'].'"  target= "_blank" class="mdi mdi-account-edit"></a></td>
+            <td><a href ="ChiTietSuatChieu-del.php?ID='.$row['ID'].'"  target= "_blank" class="mdi mdi-close"></span></td>';
+        }
     echo '
                     <tr>
                         <td>'.$row['ID'].'</td>
@@ -44,8 +54,7 @@
                         <td>'.$row['TenPhongChieu'].'</td>
                         <td>'.$row['SLGhe'].'</td>
                         <td>'.$row['LichChieu'].'</td>
-                        <td><a href ="ChiTietSuatChieu-edit.php?ID='.$row['ID'].'"  target= "_blank" class="mdi mdi-account-edit"></a></td>
-                        <td><a href ="ChiTietSuatChieu-del.php?ID='.$row['ID'].'"  target= "_blank" class="mdi mdi-close"></span></td>
+                        '.$admin2.'
                     </tr>
                     
               ' ;

@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>IDEA TEAM - Quản lý Rạp Chiếu Phim</title>
+    <title>IDEA STUDIO - Quản lý Rạp Chiếu Phim</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
@@ -106,23 +106,29 @@
                             </a>
                         </li>
 
-                        <li>
+                       <?php
+                        if (isset($_SESSION['admin']) && $_SESSION['admin'] === TRUE) {
+                            echo '
+                            <li>
                             <a href="index.php?type=5">
                                 <i class="fi-air-play"></i> <span> Quản lý Nhân viên </span>
                             </a>
-                        </li>
+                            </li>
 
-                        <li>
-                            <a href="index.php?type=6">
-                                <i class="fi-air-play"></i> <span> Bảng lương nhân viên </span>
-                            </a>
-                        </li>
+                            <li>
+                                <a href="index.php?type=6">
+                                    <i class="fi-air-play"></i> <span> Bảng lương nhân viên </span>
+                                </a>
+                            </li>
 
-                        <li>
-                            <a href="index.php?type=7">
-                                <i class="fi-air-play"></i> <span>Quản lý tài khoản </span>
-                            </a>
-                        </li>
+                            <li>
+                                <a href="index.php?type=7">
+                                    <i class="fi-air-play"></i> <span>Quản lý tài khoản </span>
+                                </a>
+                            </li>    
+                            ';
+                        }
+                       ?>
 
 
                     </ul>
@@ -187,7 +193,7 @@
                                                         if ($t == 7) echo "Quản lý Tài khoản";
                                                         ?></h4>
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">IDEA TEAM</a></li>
+                                    <li class="breadcrumb-item"><a href="#">IDEA STUDIO</a></li>
                                     <li class="breadcrumb-item"><a href="#">Bảng</a></li>
                                     <li class="breadcrumb-item active">
                                         <?php
@@ -305,7 +311,7 @@
             <!-- content -->
 
             <footer class="footer text-right">
-                2021 © IDEA TEAM - Hệ Thống Quản Lý Rạp Chiếu Phim
+                2021 © IDEA STUDIO - Hệ Thống Quản Lý Rạp Chiếu Phim
             </footer>
 
         </div>
