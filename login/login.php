@@ -15,6 +15,7 @@
         // đúng
         $row = $stmt->fetch();
         $_SESSION['login'] = $username;
+        $_SESSION['ID'] = $row['ID'];
         if ($row['level'] == 1) $_SESSION['admin'] = TRUE;
          header('location: ../index.php');
     }

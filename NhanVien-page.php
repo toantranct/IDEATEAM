@@ -1,12 +1,22 @@
 <?php
     include 'connect.php';
     $sql  = "select * from NhanVien";
+    if (!isset($_SESSION['admin'])) {
+        $sql = $sql . ' where MaNV = \''. $_SESSION['ID'] .'\'';
+    }
+
     $stmt = $conn->prepare($sql);
     $stmt->execute();
 
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
-
+    
+    $admin ='';
+    $admin2='';
+    if (isset($_SESSION['adnin']) && $_SESSION['admin'] === TRUE) {
+        $admin = ' <th>Sửa</th>
+        <th>Xoá</th>';
+    }
     echo '
         <div class="table-rep-plugin">
         <div class="table-responsive" data-pattern="priority-columns">
@@ -23,13 +33,16 @@
                         <th data-priority="6">Chức vụ</th>
                         <th data-priority="6">Ngày đi làm</th>
                         <th data-priority="6">Mã nhân viên quản lí</th>
-                        <th>Sửa</th>
-                        <th>Xoá</th>
+                       '.$admin.'
                     </tr>
                 </thead>
                 <tbody>
     ';
     while ($row = $stmt->fetch()) {   
+        if (isset($_SESSION['adnin']) && $_SESSION['admin'] === TRUE) {
+          $admin2 = '<td><a href ="NHanVien-edit.php?MaNV='.$row['MaNV'].'"  target= "_blank" class="mdi mdi-account-edit"></a></td>
+          <td><a href ="NHanVien-del.php?MaNV='.$row['MaNV'].'"  target= "_blank" class="mdi mdi-close"></span></td>';
+        }
     echo '
                     <tr>
                         <td>'.$row['MaNV'].'</td>
@@ -42,8 +55,7 @@
                         <td>'.$row['ChucVu'].'</td>
                         <td>'.$row['NgayDiLam'].'</td>
                         <td>'.$row['MaNVQL'].'</td>
-                        <td><a href ="NHanVien-edit.php?MaNV='.$row['MaNV'].'"  target= "_blank" class="mdi mdi-account-edit"></a></td>
-                        <td><a href ="NHanVien-del.php?MaNV='.$row['MaNV'].'"  target= "_blank" class="mdi mdi-close"></span></td>
+                        '.$admin2.'
                     </tr>
                     
               ' ;

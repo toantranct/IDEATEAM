@@ -128,6 +128,20 @@
                             </li>    
                             ';
                         }
+                        else {
+                            echo '
+                            <li>
+                            <a href="index.php?type=5">
+                                <i class="fi-air-play"></i> <span> Thông tin Nhân viên </span>
+                            </a>
+                            </li>
+
+                            <li>
+                                <a href="index.php?type=6">
+                                    <i class="fi-air-play"></i> <span>Lương </span>
+                                </a>
+                            </li>';
+                        }
                        ?>
 
 
