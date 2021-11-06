@@ -13,7 +13,7 @@
     
     $admin ='';
     $admin2='';
-    if (isset($_SESSION['adnin']) && $_SESSION['admin'] === TRUE) {
+    if (isset($_SESSION['admin']) && $_SESSION['admin'] === TRUE) {
         $admin = ' <th>Sửa</th>
         <th>Xoá</th>';
     }
@@ -39,7 +39,7 @@
                 <tbody>
     ';
     while ($row = $stmt->fetch()) {   
-        if (isset($_SESSION['adnin']) && $_SESSION['admin'] === TRUE) {
+        if (isset($_SESSION['admin']) && $_SESSION['admin'] === TRUE) {
           $admin2 = '<td><a href ="NHanVien-edit.php?MaNV='.$row['MaNV'].'"  target= "_blank" class="mdi mdi-account-edit"></a></td>
           <td><a href ="NHanVien-del.php?MaNV='.$row['MaNV'].'"  target= "_blank" class="mdi mdi-close"></span></td>';
         }
