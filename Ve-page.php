@@ -27,13 +27,14 @@
                 <tbody>
     ';
     while ($row = $stmt->fetch()) {   
+        $GiamGia = round($row['GiamGia'], 2);
     echo "
                     <tr>
                         <td>".$row['MaVe']."</td>
                         <td>".$row['NgayDat']."</td>
                         <td>".$row['Ghe']."</td>
                         <td>".$row['GiaVe']."</td>
-                        <td>".$row['GiamGia']."</td>
+                        <td>".$GiamGia."</td>
                         <td>".$row['GiaVeThuc']."</td>
                         <td>".$row['MaK']."</td>
                         <td>".$row['MaNV']."</td>

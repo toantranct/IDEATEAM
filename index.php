@@ -242,16 +242,40 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card-box">
-
                                 <?php
-                                if ($t == 0) include 'Ve-page.php';
+                                $link ='#';
+                                if ($t == 0) $link = 'Ve-add.php';
+                                if ($t == 1) $link = 'ChiTietSuatChieu-add.php';
+                                if ($t == 2) $link = 'Phim-add.php';
+                                if ($t == 3) $link = 'PhongChieu-add.php';
+                                if ($t == 4) $link = 'KhachHang-add.php';
+                                if ($t == 5) $link = 'NhanVien-add.php';
+                                if ($t == 6) $link = 'Luong-add.php';
+                                if ($t == 7) $link = 'TaiKhoan-add.php';
+                                $btnAdd = ' <div class="btn-group focus-btn-group">
+                                    <a href="'.$link.'" target="_blank"><button class="btn btn-default" name="addBtn" style="background-color: #ffffff; border: 1px solid rgba(49, 58, 70, 0.3);">
+                                    <span class="glyphicon glyphicon-screenshot"></span> Thêm</button></a>
+                               </div>';
+                                if (isset($_SESSION['admin']) && $_SESSION['admin']) {
+                                        echo $btnAdd;
+                                }
+                                if ($t == 0) {
+                                    if (!isset($_SESSION['admin'])) echo $btnAdd;
+                                    include 'Ve-page.php';
+                                 
+                                }
                                 if ($t == 1) include 'ChiTietSuatChieu-page.php';
                                 if ($t == 2) include 'Phim-page.php';
                                 if ($t == 3) include 'PhongChieu-page.php';
-                                if ($t == 4) include 'KhachHang-page.php';
+                                if ($t == 4) {
+                                    if (!isset($_SESSION['admin'])) echo $btnAdd;
+                                    include 'KhachHang-page.php';
+                                } 
                                 if ($t == 5) include 'NhanVien-page.php';
                                 if ($t == 6) include 'Luong-page.php';
-                                if ($t == 7) include 'TaiKhoan-page.php';
+                                if ($t == 7)    include 'TaiKhoan-page.php';
+                                  
+                                
 
                                 ?>
 

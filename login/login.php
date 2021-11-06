@@ -21,7 +21,10 @@
     }
     else {
        // echo "sai";
-       header('location: index.php');
+       echo "<script type='text/javascript'> alert('Sai tên tài khoản hoặc mật khẩu!');
+       window.location.replace('index.php');
+           </script>";
+
     }
 }
     

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thêm tài khoản</title>
+    <title>Quản lý lương</title>
     <!-- App favicon -->
     <link rel="shortcut icon" href="Assets/images/favicon.ico">
 
@@ -19,36 +19,42 @@
 </head>
 
 <body>
-    <form action="TaiKhoan-add.php" method="post">
+    <form action="Luong-add.php" method="post">
         <div class="container">
             <div class="col-md-12">
                 <div class="card-box">
-                    <h4 class="m-t-0 m-b-30 header-title"><b>Thêm tài khoản <span style="color: red;"> </span> </b></h4>
+                    <h4 class="m-t-0 m-b-30 header-title"><b>Quản lý lương <span style="color: red;"> </span> </b></h4>
 
                     <form class="form-horizontal" role="form">
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-3 col-form-label">Username</label>
+                            <label for="inputEmail3" class="col-3 col-form-label">Mã Lương</label>
                             <div class="col-9">
-                                <input type="" class="form-control" required id="username" name = "username" placeholder="Username">
+                                <input type="" class="form-control" required id="MaL" name = "MaL" placeholder="Mã Lương">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputPassword3" class="col-3 col-form-label">Mật khẩu</label>
+                            <label for="inputPassword3" class="col-3 col-form-label">Mã Nhân viên</label>
                             <div class="col-9">
-                                <input type="" class="form-control" required id="password"  name="password" placeholder="Mật khẩu">
+                                <input type="" class="form-control" required id="MaNV"  name="MaNV" placeholder="Mã Nhân viên">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-3 col-form-label">Mã nhân viên</label>
+                            <label for="inputEmail3" class="col-3 col-form-label">Lương ban đầu (VND/ngày)</label>
                             <div class="col-9">
-                                <input type="" class="form-control" required id="MaNV" name = "MaNV" placeholder="Mã nhân viên">
+                                <input type="" class="form-control" required id="LuongBanDau" name = "LuongBanDau" placeholder="Lương ban đầu (VND/ngày)">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-3 col-form-label">Ngày nhận lương</label>
+                            <div class="col-9">
+                                <input type="date" class="form-control" required id="NgayNhanLuong" name = "NgayNhanLuong" placeholder="Ngày nhận lương">
                             </div>
                         </div>
                       
                         <div class="form-group row">
-                            <label for="inputPassword5" class="col-3 col-form-label">Phần quyền</label>
+                            <label for="inputPassword5" class="col-3 col-form-label">Số ngày đi làm</label>
                             <div class="col-9">
-                                <input type="number" class="form-control" required id="level" name="level" min-"0" max = "1">
+                             <input type="" class="form-control" required id="SoNgayLam"  name="SoNgayLam" placeholder="Số Ngày Làm" min ="0">
                             </div>
                         </div>
                         <div class="form-group mb-0 justify-content-end row">
@@ -84,16 +90,17 @@
     if (isset($_POST['btnEdit'])) {
         include 'connect.php';
 
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        $MaL = $_POST['MaL'];
+        $NgayNhanLuong = $_POST['NgayNhanLuong'];
         $MaNV = $_POST['MaNV'];
-        $level = $_POST['level'];
+        $LuongBanDau = $_POST['LuongBanDau'];
+        $SoNgayLam = $_POST['SoNgayLam'];
         
         // echo $id . $MaPhim . $MaPC . $LoaiPhim. $LichChieu;
 
          // Prepare statement
-        $sql = "Insert into Users values ('$username',
-        '$MaNV', '$password', '$level') ";
+        $sql = "Insert into Luong(MaL, MaNV, NgayNhanLuong,LuongBanDau, SoNgayLam) values ('$MaL',
+        '$MaNV', '$NgayNhanLuong','$LuongBanDau', '$SoNgayLam') ";
        
 
         // execute the query
