@@ -30,7 +30,7 @@
     <body class="account-pages">
 
         <!-- Begin page -->
-        <!-- <div class="accountbg" style="background: url('../Assets/images/bg-1.jpg');background-size: cover;"></div> -->
+        <div class="accountbg" style="background: url('../Assets/images/bg-1.jpg');"></div>
 
         <div class="wrapper-page account-page-full">
 
