@@ -117,6 +117,16 @@
             
         }
         
+          # First procedure
+          try {
+            $sql = "exec proc2";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+        } catch( PDOException $e ) {
+            die( "Error executing stored procedure: ".$e->getMessage());
+        }
+        // execute the query
+
 
         
 
